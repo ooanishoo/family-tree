@@ -1,0 +1,28 @@
+export type Relationship =
+  | 'PATERNAL-UNCLE'
+  | 'MATERNAL-UNCLE'
+  | 'PATERNAL-AUNT'
+  | 'MATERNAL-AUNT'
+  | 'SISTER-IN-LAW'
+  | 'BROTHER-IN-LAW'
+  | 'COUSIN'
+  | 'FATHER'
+  | 'MOTHER'
+  | 'CHILD'
+  | 'SON'
+  | 'DAUGHTER'
+  | 'BROTHER'
+  | 'SISTER'
+  | 'GRAND-CHILD'
+  | 'GRAND-DAUGHTER'
+  | 'GRAND-SON'
+  | 'SIBLING'
+  | 'SPOUSE'
+
+export type Relation =
+  | Relationship
+  | 'ANCESTOR'
+  | 'DESCENDANT'
+  | 'COUSIN-IN-LAW'
+  | 'FATHER-IN-LAW'
+  | 'MOTHER-IN-LAW'
