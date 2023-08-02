@@ -258,6 +258,17 @@ export class FamilyTree {
     return mothersWithMostGirls
   }
 
+  public getMemberNames(): string[] {
+    let memberNames: string[] = []
+
+    this.traverse((currentMember: Member) => {
+      memberNames.push(currentMember.name)
+      currentMember?.spouse && memberNames.push(currentMember?.spouse.name)
+    })
+
+    return memberNames
+  }
+
   private traverse(cb: (currentMember: Member, depth: number) => void): void {
     // Queue to store the members to be visited
     const queue: [Member, number][] = [[this.root, 0]]
@@ -535,17 +546,5 @@ export class FamilyTree {
       }
     })
     return foundMember
-  }
-
-  public getMemberNames(): string[] {
-    let memberNames: string[] = []
-
-    // Traverse the tree and find the parent of the given member node
-    this.traverse((currentMember: Member) => {
-      memberNames.push(currentMember.name)
-      currentMember?.spouse && memberNames.push(currentMember?.spouse.name)
-    })
-
-    return memberNames
   }
 }
