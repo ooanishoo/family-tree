@@ -1,6 +1,7 @@
 import Drawer from '@/components/Drawer'
 import FamilyTree from '@/components/FamilyTree'
 import { useFamilyTree } from '@/components/FamilyTreeProvider'
+import MotherOfGirls from '@/components/MotherOfGirls'
 import SearchMember from '@/components/SearchMember'
 import SearchRelationship from '@/components/SearchRelationship'
 import { Button } from '@zendeskgarden/react-buttons'
@@ -41,10 +42,12 @@ export default function Home() {
 
       <FamilyTree rootMember={root} />
       <Drawer isOpen={isOpen} onClose={closeDrawer}>
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-8">
           <SearchRelationship />
           <span className="w-full mr-4 h-[0.5px] bg-gray-300"></span>
           <SearchMember />
+          <span className="w-full mr-4 h-[0.5px] bg-gray-300"></span>
+          <MotherOfGirls />
         </div>
       </Drawer>
     </main>
