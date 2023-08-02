@@ -30,7 +30,11 @@ const SearchRelationship = () => {
   }
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={handleSearchMember}>
+    <form
+      className="flex flex-col gap-4"
+      onSubmit={handleSearchMember}
+      role="form"
+    >
       <p className=" text-gray-500">Find relationship between two members</p>
       <Field>
         <Label>Select member</Label>

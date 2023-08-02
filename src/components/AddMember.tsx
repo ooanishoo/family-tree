@@ -56,16 +56,21 @@ const AddMember = ({ onSubmit, member }: AddMemberProps) => {
 
   return (
     <Modal onClose={onSubmit}>
-      <form className="flex flex-col gap-4" onSubmit={handleAddMember}>
+      <form
+        className="flex flex-col gap-4"
+        onSubmit={handleAddMember}
+        role="form"
+      >
         <Header tag="h2">Add new family member</Header>
         <Body className="!flex flex-col gap-4">
           <Field>
-            <Label>Relative name</Label>
-            <Input value={member?.name} disabled />
+            <Label htmlFor="relativeName">Relative name</Label>
+            <Input id="relativeName" required value={member?.name} disabled />
           </Field>
           <Field>
-            <Label>Relationship</Label>
+            <Label htmlFor="relationship">Relationship</Label>
             <Combobox
+              id="relationship"
               isEditable={false}
               onChange={({ selectionValue }) => {
                 if (selectionValue !== undefined) {
@@ -89,15 +94,17 @@ const AddMember = ({ onSubmit, member }: AddMemberProps) => {
             </Combobox>
           </Field>
           <Field>
-            <Label>Name</Label>
+            <Label htmlFor="newMemberName">Name</Label>
             <Input
+              id="newMemberName"
               value={newMember}
               onChange={(e) => setNewMember(e.target.value)}
             />
           </Field>
           <Field>
-            <Label>Gender</Label>
+            <Label htmlFor="gender">Gender</Label>
             <Combobox
+              id="gender"
               isEditable={false}
               onChange={({ selectionValue }) => {
                 if (selectionValue !== undefined) {

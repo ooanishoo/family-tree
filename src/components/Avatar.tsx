@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 
 interface AvatarProps {
-  color: string
-  title: string
+  color?: string
+  title?: string
   onClick?: () => void
   size?: number
 }
@@ -15,8 +15,8 @@ const Avatar = ({ color, title, onClick }: AvatarProps) => {
         !color && 'bg-gray-500',
         `${color} relative h-10 w-10 cursor-pointer overflow-hidden rounded-full border-[0.5px] border-solid border-gray-500`,
       )}
-      aria-label={title}
-      title={title}
+      aria-label={title ?? 'Avatar'}
+      title={title ?? 'Avatar'}
       onClick={onClick}
     >
       <svg

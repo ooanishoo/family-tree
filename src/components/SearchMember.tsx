@@ -81,13 +81,16 @@ const SearchMember = () => {
   )
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={handleSearchMember}>
-      <p className=" text-gray-500">
-        Filter family members through relationship{' '}
-      </p>
+    <form
+      className="flex flex-col gap-4"
+      onSubmit={handleSearchMember}
+      role="form"
+    >
+      <p className=" text-gray-500">Filter family members by relationship </p>
       <Field>
-        <Label>Select member</Label>
+        <Label htmlFor="selectMember">Select member</Label>
         <Combobox
+          id="selectMember"
           isEditable={false}
           onChange={({ selectionValue }) => {
             if (selectionValue !== undefined) {
@@ -104,8 +107,9 @@ const SearchMember = () => {
         </Combobox>
       </Field>
       <Field>
-        <Label>Relationship</Label>
+        <Label htmlFor="relationship">Relationship</Label>
         <Combobox
+          id="relationship"
           isEditable={false}
           onChange={({ selectionValue }) => {
             if (selectionValue !== undefined) {

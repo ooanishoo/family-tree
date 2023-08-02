@@ -7,7 +7,7 @@ import Avatar from '@/components/Avatar'
 export const Spouse = ({ member }: { member: IMember }) => {
   return (
     <>
-      <svg className="w-20 h-2">
+      <svg className="w-20 h-2" data-testid="horizontal-line">
         <line
           x1="0"
           y1="1"
@@ -32,7 +32,7 @@ export const Person = ({ member }: { member: IMember }) => {
   }
 
   return (
-    <div className="relative pb-6">
+    <div className="relative pb-6" data-testid="person-container">
       {isModalVisible && (
         <AddMember
           member={sourceMember as IMember}

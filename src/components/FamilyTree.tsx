@@ -11,6 +11,7 @@ const FamilyTree = ({ rootMember, level = 0 }: FamilyTreeProps) => {
   return (
     <div
       key={rootMember.name}
+      data-testid={level === 0 ? 'family-tree-root' : undefined}
       className={clsx(
         'flex flex-col justify-center',
         level > 0 && 'self-start',
