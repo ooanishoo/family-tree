@@ -178,7 +178,7 @@ describe('FamilyTree', () => {
     })
   })
 
-  describe.only('getRelationship()', () => {
+  describe('getRelationship()', () => {
     beforeAll(() => (family = setupShanFamilyTree()))
 
     describe(`should return a member's realtionship to a relative member`, () => {
@@ -188,12 +188,12 @@ describe('FamilyTree', () => {
         ${'lavnya'}     | ${'vich'}       | ${'ANCESTOR'}
         ${'misa'}       | ${'satya'}      | ${'ANCESTOR'}
         ${'driya'}      | ${'lika'}       | ${'ANCESTOR'}
-        ${'gru'}        | ${'queen shan'} | ${'ANCESTOR'}
+        ${'gru'}        | ${'queen anga'} | ${'ANCESTOR'}
         ${'ambi'}       | ${'jata'}       | ${'DESCENDANT'}
         ${'vich'}       | ${'lavnya'}     | ${'DESCENDANT'}
         ${'satya'}      | ${'misa'}       | ${'DESCENDANT'}
         ${'lika'}       | ${'driya'}      | ${'DESCENDANT'}
-        ${'queen shan'} | ${'gru'}        | ${'DESCENDANT'}
+        ${'queen anga'} | ${'gru'}        | ${'DESCENDANT'}
         ${'king shan'}  | ${'queen anga'} | ${'SPOUSE'}
         ${'queen anga'} | ${'king shan'}  | ${'SPOUSE'}
         ${'satya'}      | ${'vyan'}       | ${'SPOUSE'}
@@ -237,11 +237,22 @@ describe('FamilyTree', () => {
         ${'chika'}      | ${'chit'}       | ${'PATERNAL-UNCLE'}
         ${'kpila'}      | ${'vyan'}       | ${null}
         ${'asva'}       | ${'lika'}       | ${null}
+        ${'king shan'}  | ${'ish'}        | ${'SON'}
+        ${'saayan'}     | ${'misa'}       | ${'SON'}
+        ${'drita'}      | ${'jata'}       | ${'SON'}
+        ${'krpi'}       | ${'kriya'}      | ${'SON'}
+        ${'king shan'}  | ${'satya'}      | ${'DAUGHTER'}
+        ${'lika'}       | ${'chika'}      | ${'DAUGHTER'}
+        ${'jnki'}       | ${'lavnya'}     | ${'DAUGHTER'}
+        ${'king shan'}  | ${'lika'}       | ${'DAUGHTER-IN-LAW'}
+        ${'chit'}       | ${'jaya'}       | ${'DAUGHTER-IN-LAW'}
+        ${'jnki'}       | ${'gru'}        | ${'SON-IN-LAW'}
+        ${'king shan'}  | ${'vyan'}       | ${'SON-IN-LAW'}
       `('$relationship', ({ name, relativeName, relationship }) => {
         const testCaseDescription =
           relationship === null
             ? `Unable to find relationship between ${name} and ${relativeName}`
-            : `${name} is ${relativeName}'s ${relationship}`
+            : `${relativeName} is ${name}'s ${relationship}`
 
         it(testCaseDescription, () => {
           const result = family.getRelationship(name, relativeName)
@@ -283,7 +294,6 @@ describe('FamilyTree', () => {
       family.addMember('Emily', 'Stella', Gender.FEMALE, 'CHILD')
 
       const motherWithMostGirls = family.mothersWithMostGirlChildren()
-      console.log('motherWithMostGirls', motherWithMostGirls)
       expect(motherWithMostGirls).not.toBeNull()
     })
 
@@ -296,7 +306,6 @@ describe('FamilyTree', () => {
       family.addMember('Olivia', 'Jimmy', Gender.MALE, 'CHILD')
 
       const motherWithMostGirls = family.mothersWithMostGirlChildren()
-      console.log(motherWithMostGirls.map(getName))
       expect(motherWithMostGirls).toHaveLength(0)
     })
   })

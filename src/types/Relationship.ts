@@ -1,3 +1,6 @@
+/**
+ * Type declaration for supported relationships
+ */
 export type Relationship =
   | 'PATERNAL-UNCLE'
   | 'MATERNAL-UNCLE'
@@ -19,10 +22,20 @@ export type Relationship =
   | 'SIBLING'
   | 'SPOUSE'
 
-export type Relation =
+/**
+ * Type declaration for searchable relationships
+ */
+export type SearchableRelationship =
   | Relationship
   | 'ANCESTOR'
   | 'DESCENDANT'
   | 'COUSIN-IN-LAW'
   | 'FATHER-IN-LAW'
   | 'MOTHER-IN-LAW'
+  | 'SON-IN-LAW'
+  | 'DAUGHTER-IN-LAW'
+
+/**
+ * Type declaration for specific relationship allowed to be added
+ */
+export type AllowedRelationship = Extract<Relationship, 'CHILD' | 'SPOUSE'>

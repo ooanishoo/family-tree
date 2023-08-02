@@ -1,7 +1,11 @@
 import { Member } from '@/models/Member'
 import { isMale, isFemale, getSpouse, isMemberOrSpouse, getName } from '@/utils'
 import { Gender } from '@/types/Gender'
-import { Relation, Relationship } from '@/types/Relationship'
+import {
+  AllowedRelationship,
+  SearchableRelationship,
+  Relationship,
+} from '@/types/Relationship'
 
 export class FamilyTree {
   public root: Member
@@ -18,7 +22,7 @@ export class FamilyTree {
     sourceName: string,
     targetName: string,
     targetGender: Gender,
-    relationship: Extract<Relationship, 'CHILD' | 'SPOUSE'>,
+    relationship: AllowedRelationship,
   ): Member {
     let source: Member | null = null
 
@@ -97,7 +101,7 @@ export class FamilyTree {
   public getRelationship(
     memberName: string,
     relativeName: string,
-  ): Relation | null {
+  ): SearchableRelationship | null {
     let member: [Member | null, number | null] = [null, null]
     let relative: [Member | null, number | null] = [null, null]
 
@@ -212,6 +216,19 @@ export class FamilyTree {
       const maternalAunts = this.maternalAunts(memberName)
       if (maternalAunts.some((aunt) => aunt.name === relativeName)) {
         return 'MATERNAL-AUNT'
+      }
+    } else if (relativeDepth - memberDepth === 1) {
+      // CHILDREN
+      const children = this.children(memberName)
+      if (children.some((child) => child.name === relativeName)) {
+        return isMale(relativeNode) ? 'SON' : 'DAUGHTER'
+      }
+      if (
+        children.some(
+          (child) => child.spouse && child.spouse.name === relativeName,
+        )
+      ) {
+        return isMale(relativeNode) ? 'SON-IN-LAW' : 'DAUGHTER-IN-LAW'
       }
     }
 
@@ -518,5 +535,17 @@ export class FamilyTree {
       }
     })
     return foundMember
+  }
+
+  public getMemberNames(): string[] {
+    let memberNames: string[] = []
+
+    // Traverse the tree and find the parent of the given member node
+    this.traverse((currentMember: Member) => {
+      memberNames.push(currentMember.name)
+      currentMember?.spouse && memberNames.push(currentMember?.spouse.name)
+    })
+
+    return memberNames
   }
 }
