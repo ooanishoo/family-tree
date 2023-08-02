@@ -71,7 +71,9 @@ To run a specific test file, pass the relative path to the test file as an argum
 npm test src/__tests__/pages/models/FamilyTree.test.ts
 ```
 
-Although FamilyTree.test.ts covers all the test cases for the given problem statement, I have added a solution.test.ts file to run specific test cases matching the four problem statement.
+Although [FamilyTree.test.ts](https://github.com/ooanishoo/family-tree/blob/main/src/__tests__/models/FamilyTree.test.ts) covers all the test cases for the given problem statement, I have added a [solution.test.ts](https://github.com/ooanishoo/family-tree/blob/main/src/__tests__/solution.test.ts) file to run specific test cases matching the four problem statement.
+
+![code](https://github.com/ooanishoo/family-tree/assets/9260574/cde07d57-4698-44ab-b65e-300f7833eadf)
 
 Running the following command will run the test cases for the four problem statements in watch mode.
 
@@ -166,6 +168,7 @@ Here is an overview of the key folders and their contents:
 
 - `src`: Root directory for the React application source code.
 - `__tests__`: Test files for the components, utilities, and model classes.
+- `__tests__/solution.test.ts`: Solution test file to address the four problem statements.
 - `components`: React components that make up the application's user interface.
 - `models`: Data models for the family tree.
 - `pages`: Holds the main pages of the application.
@@ -173,47 +176,51 @@ Here is an overview of the key folders and their contents:
 - `utils`: Contains utility functions and constants.
 
 ```
-├── src
-│   ├── __tests__
-│   │   ├── components
-│   │   │   ├── AddMember.test.tsx
-│   │   │   ├── Avatar.test.tsx
-│   │   │   ├── Drawer.test.tsx
-│   │   │   ├── FamilyTree.test.tsx
-│   │   │   ├── FamilyTreeProvider.test.tsx
-│   │   │   ├── Person.test.tsx
-│   │   │   ├── SearchMember.test.tsx
-│   │   │   └── SearchRelationship.test.tsx
-│   │   ├── models
-│   │   │   ├── FamilyTree.test.ts
-│   │   │   └── Member.test.ts
-│   │   └── utils
-│   │       └── index.test.ts
+src
+├── __tests__
 │   ├── components
-│   │   ├── AddMember.tsx
-│   │   ├── Avatar.tsx
-│   │   ├── Drawer.tsx
-│   │   ├── FamilyTree.tsx
-│   │   ├── FamilyTreeProvider.tsx
-│   │   ├── Person.tsx
-│   │   ├── SearchMember.tsx
-│   │   └── SearchRelationship.tsx
+│   │   ├── AddMember.test.tsx
+│   │   ├── Avatar.test.tsx
+│   │   ├── Drawer.test.tsx
+│   │   ├── FamilyTree.test.tsx
+│   │   ├── FamilyTreeProvider.test.tsx
+│   │   ├── MotherOfGirls.test.tsx
+│   │   ├── Person.test.tsx
+│   │   ├── SearchMember.test.tsx
+│   │   └── SearchRelationship.test.tsx
 │   ├── models
-│   │   ├── FamilyTree.ts
-│   │   └── Member.ts
-│   ├── pages
-│   │   ├── _app.tsx
-│   │   ├── _document.tsx
-│   │   └── index.tsx
-│   ├── styles
-│   │   └── globals.css
-│   ├── types
-│   │   ├── Gender.ts
-│   │   ├── IMember.ts
-│   │   └── Relationship.ts
-│   └── utils
-│       ├── constants.ts
-│       └── index.ts
+│   │   ├── FamilyTree.test.ts
+│   │   └── Member.test.ts
+│   ├── utils
+│   │   └── index.test.ts
+│   ├── index.test.tsx
+│   └── solution.test.ts
+├── components
+│   ├── AddMember.tsx
+│   ├── Avatar.tsx
+│   ├── Drawer.tsx
+│   ├── FamilyTree.tsx
+│   ├── FamilyTreeProvider.tsx
+│   ├── MotherOfGirls.tsx
+│   ├── Person.tsx
+│   ├── SearchMember.tsx
+│   └── SearchRelationship.tsx
+├── models
+│   ├── FamilyTree.ts
+│   └── Member.ts
+├── pages
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   └── index.tsx
+├── styles
+│   └── globals.css
+├── types
+│   ├── Gender.ts
+│   ├── IMember.ts
+│   └── Relationship.ts
+└── utils
+    ├── constants.ts
+    └── index.ts
 ```
 
 ## Features
@@ -271,6 +278,8 @@ Here is an overview of the key folders and their contents:
 - **Toast Notifications:** Add toast notifications to notify users of the success or failure of their actions when adding a new member to the family tree.
 - **Persistent State:** The application does not persist the family tree data state after adding new members to the tree. Saving tree data in localStorage can help persist the state of the family tree and provide a better user experience.
 - **Create new family trees:** The application does not allow users to create a new family tree. It would be great to add a feature to create a new family tree and switch between different family trees.
+- **Test cases:** Add more unit test cases for components that deal with form submission and check if the correct results are displayed on the screen.
+- **Improve UI:** Due to time constraints, in the UI a member node is only connected to a spouse. The UI does not have the exact styling to showcase that a member node is connected to its children.
 
 ### Tech Stack
 
