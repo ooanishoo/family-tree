@@ -71,6 +71,36 @@ To run a specific test file, pass the relative path to the test file as an argum
 npm test src/__tests__/pages/models/FamilyTree.test.ts
 ```
 
+Although FamilyTree.test.ts covers all the test cases for the given problem statement, I have added a solution.test.ts file to run specific test cases matching the four problem statement.
+
+Running the following command will run the test cases for the four problem statements in watch mode.
+
+```
+npm run start
+```
+
+## Other available scripts
+
+These scripts refer to the different stages of developing an application:
+
+- Build the application for production usage
+
+```
+npm run build
+```
+
+- Start a Next.js production server. (Make sure to run the build script before running this command)
+
+```
+npm run prod
+```
+
+- Run pre-commit hook to run linting and formatting checks
+
+```
+npm run precommit
+```
+
 ## Problem Statement
 
 King Shan is the emperor of Lengaburu and has been ruling the planet for the last 350 years. In these problems, you have to write code to model out the family tree of King Shan. There are 4 problems that revolve around the family tree.

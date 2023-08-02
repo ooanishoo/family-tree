@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "prod": "next start",
     "lint": "next lint",
     "test": "jest",
+    "start": "jest solution.test.ts --watch",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "check-types": "tsc --pretty --noEmit",
