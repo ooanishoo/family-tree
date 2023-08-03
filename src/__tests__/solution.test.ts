@@ -79,17 +79,33 @@ describe('FamilyTree', () => {
 
   describe('Problem 2: A new born', () => {
     describe('a child should be added into a particular family in the tree.', () => {
-      it(`should create a new child with name: child1 & gender: FEMALE`, () => {
-        const child = family.addMember(
-          'queen anga',
-          'child1',
-          Gender.FEMALE,
-          'CHILD',
-        )
-        expect(child).toBeDefined()
-        expect(child.name).toBe('child1')
-        expect(child.gender).toBe(Gender.FEMALE)
-      })
+      describe.each`
+        existingMemberName | newMemberName | newMemberGender  | relationship
+        ${'queen anga'}    | ${'john'}     | ${Gender.MALE}   | ${'CHILD'}
+        ${'ambi'}          | ${'sally'}    | ${Gender.FEMALE} | ${'CHILD'}
+        ${'lavnya'}        | ${'olivia'}   | ${Gender.FEMALE} | ${'CHILD'}
+        ${'kpila'}         | ${'billy'}    | ${Gender.MALE}   | ${'CHILD'}
+      `(
+        '$relationship:',
+        ({
+          existingMemberName,
+          newMemberName,
+          newMemberGender,
+          relationship,
+        }) => {
+          it(`${newMemberName} is ${existingMemberName}'s ${relationship}`, () => {
+            const child = family.addMember(
+              existingMemberName,
+              newMemberName,
+              newMemberGender,
+              relationship,
+            )
+            expect(child).toBeDefined()
+            expect(child.name).toBe(newMemberName)
+            expect(child.gender).toBe(newMemberGender)
+          })
+        },
+      )
     })
   })
 
