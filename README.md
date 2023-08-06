@@ -161,6 +161,8 @@ The solution has been implemented with the following assumptions:
 2. **Only married couples can have a child**: You cannot add a child to a family member if the family member does not have a spouse.
 3. **Monogamy**: You cannot add a spouse to a family member if the family member is already married.
 4. **Heterosexual marriage**: You can only add an opposite-sex spouse to a family member.
+5. **Unique names**: Each family member must have a unique name. You cannot add a family member with the same name as an existing family member.
+6. **Case-sensitive names**: Names are case-sensitive. For example, `King Shan` and `king shan` are two different names.
 
 ### Folder structure:
 
