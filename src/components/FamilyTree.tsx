@@ -1,32 +1,49 @@
+import { Person } from '@/components/Person'
 import { IMember } from '@/types/IMember'
-import clsx from 'clsx'
-import { Person, Spouse } from '@/components/Person'
 
-interface FamilyTreeProps {
+interface SubFamilyTreeProps {
   rootMember: IMember
   level?: number
 }
 
-const FamilyTree = ({ rootMember, level = 0 }: FamilyTreeProps) => {
-  return (
-    <div
+const SubFamilyTree = ({ rootMember, level = 0 }: SubFamilyTreeProps) => {
+  const renderCouple = () => (
+    <div className="border-solid border-gray-300 border-[1px] py-2 px-3 min-w-[80px] rounded-md inline-block">
+      <Person member={rootMember} />
+      <span className="inline-block w-2"></span>
+      <Person member={rootMember?.spouse} />
+    </div>
+  )
+
+  const renderChildren = () => (
+    <ul
       key={rootMember.name}
-      data-testid={level === 0 ? 'family-tree-root' : undefined}
-      className={clsx(
-        'flex flex-col justify-center',
-        level > 0 && 'self-start',
-        'gap-24',
-      )}
+      className="pt-14 relative flex flex-row items-baseline justify-center"
     >
-      <div className="flex justify-center items-center">
-        <Person member={rootMember} />
-        {rootMember.spouse ? <Spouse member={rootMember.spouse} /> : null}
-      </div>
-      <div className="flex flex-row gap-20">
-        {rootMember.children.map((member) => (
-          <FamilyTree rootMember={member} level={level + 1} key={member.name} />
-        ))}
-      </div>
+      {rootMember.children.map((member) => (
+        <SubFamilyTree
+          rootMember={member}
+          level={level + 1}
+          key={member.name}
+        />
+      ))}
+    </ul>
+  )
+
+  return (
+    <li className="float-left list-none relative pt-14 pr-4 pl-1">
+      {renderCouple()}
+      {rootMember.children.length > 0 && renderChildren()}
+    </li>
+  )
+}
+
+const FamilyTree = ({ rootMember }: { rootMember: IMember }) => {
+  return (
+    <div className="tree whitespace-nowrap" data-testid="family-tree-root">
+      <ul className="relative flex flex-row items-baseline justify-center">
+        <SubFamilyTree rootMember={rootMember} />
+      </ul>
     </div>
   )
 }

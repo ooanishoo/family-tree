@@ -4,35 +4,25 @@ import { useState } from 'react'
 import AddMember from '@/components/AddMember'
 import Avatar from '@/components/Avatar'
 
-export const Spouse = ({ member }: { member: IMember }) => {
-  return (
-    <>
-      <svg className="w-20 h-2" data-testid="horizontal-line">
-        <line
-          x1="0"
-          y1="1"
-          x2="100%"
-          y2="1"
-          style={{ stroke: 'black', strokeWidth: 2 }}
-        />
-      </svg>
-      <Person member={member} />
-    </>
-  )
-}
-
-export const Person = ({ member }: { member: IMember }) => {
+export const Person = ({ member }: { member: IMember | null }) => {
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [sourceMember, setSourceMember] = useState<IMember>(member)
-  const { name, gender } = member
+  const [sourceMember, setSourceMember] = useState<IMember | null>(member)
 
+  if (member === null) {
+    return null
+  }
+
+  const { name, gender } = member
   const handleOnClick = () => {
     setSourceMember(member)
     setIsModalVisible(true)
   }
 
   return (
-    <div className="relative pb-6" data-testid="person-container">
+    <div
+      className="!border-none py-2 px-3 inline-block"
+      data-testid="person-container"
+    >
       {isModalVisible && (
         <AddMember
           member={sourceMember as IMember}
@@ -44,7 +34,7 @@ export const Person = ({ member }: { member: IMember }) => {
         onClick={handleOnClick}
         title={`Avatar for ${name}`}
       />
-      <p className="absolute top-10 left-1">{name}</p>
+      <p className="m-0 text-gray-500">{member.name}</p>
     </div>
   )
 }

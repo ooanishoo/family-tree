@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/**
+ * CSS for the connector lines
+ * Connector lines are added using the ::before and ::after pseudo-elements
+ * Used css files instead of tailwind because of the complexity of the selectors
+ */
+
+.tree li::before,
+.tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #d1d5db;
+  width: 50%;
+  height: 56px;
+}
+
+/* Add vertical connector from parent to children  */
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #d1d5db;
+}
+
+/*Remove left-right connectors from members without any siblings*/
+.tree li:only-child::after,
+.tree li:only-child::before {
+  display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child {
+  padding-top: 0;
+}
+
+/*Remove left connector from first child and right connector from last child*/
+.tree li:first-child::before,
+.tree li:last-child::after {
+  border: 0 none;
+}
+
+/*Adding back the vertical connector to the last child member*/
+.tree li:last-child::before {
+  border-right: 1px solid #d1d5db;
+  border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+
+/*Add vertical connector from root parent to it's children*/
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 56px;
+  border-left: 1px solid #d1d5db;
+}

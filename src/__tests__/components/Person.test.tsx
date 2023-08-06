@@ -1,4 +1,4 @@
-import { Person, Spouse } from '@/components/Person'
+import { Person } from '@/components/Person'
 import { Gender } from '@/types/Gender'
 import { IMember } from '@/types/IMember'
 import { render, screen } from '@testing-library/react'
@@ -36,20 +36,5 @@ describe('<Person />', () => {
     modalElement = screen.getByRole('dialog')
     await userEvent.click(avatarElement)
     expect(modalElement).toBeInTheDocument()
-  })
-})
-describe('<Spouse />', () => {
-  beforeEach(() => {
-    render(<Spouse member={mockMember} />)
-  })
-
-  it('renders Person component', () => {
-    const personComponent = screen.getByTestId('person-container')
-    expect(personComponent).toBeInTheDocument()
-  })
-
-  it('renders a horizontal line to connect Person component', () => {
-    const horizontalLine = screen.getByTestId('horizontal-line')
-    expect(horizontalLine).toBeInTheDocument()
   })
 })
