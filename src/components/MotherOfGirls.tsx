@@ -26,7 +26,7 @@ const MotherOfGirls = () => {
             />
           </div>
           <div className="min-w-0 flex-1 ">
-            <p className="m-0 text-lg  text-gray-900">{member.name}</p>
+            <p className="m-0 text-lg  text-gray-700">{member.name}</p>
             <p className=" m-0 text-xs text-gray-500  ">{member.gender}</p>
           </div>
         </div>

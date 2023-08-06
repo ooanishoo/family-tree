@@ -113,7 +113,6 @@ describe('FamilyTree', () => {
     it('should determine which mother has the most girl children.', () => {
       const motherWithMostGirls = family.mothersWithMostGirlChildren()
       expect(motherWithMostGirls).not.toBeNull()
-      console.log('motherWithMostGirls', motherWithMostGirls)
       expect(motherWithMostGirls[0].name).toBe('queen anga')
       expect(motherWithMostGirls[1].name).toBe('lika')
       expect(motherWithMostGirls[2].name).toBe('satya')

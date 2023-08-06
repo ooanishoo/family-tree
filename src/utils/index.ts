@@ -28,7 +28,7 @@ export const setupShanFamilyTree = (): FamilyTree => {
   family.addMember('vich', 'lika', Gender.FEMALE, 'SPOUSE')
   family.addMember('satya', 'vyan', Gender.MALE, 'SPOUSE')
 
-  /// 3rd generation
+  // 3rd generation
   family.addMember('ambi', 'drita', Gender.MALE, 'CHILD')
   family.addMember('ambi', 'vrita', Gender.MALE, 'CHILD')
 
