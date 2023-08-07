@@ -37,13 +37,13 @@ Before setting up and running the project, ensure you have the following install
 git clone https://github.com/ooanishoo/family-tree.git
 ```
 
-1.  Navigate to the project directory:
+2.  Navigate to the project directory:
 
 ```
 cd family-tree
 ```
 
-1.  Install the required dependencies:
+3.  Install the required dependencies:
 
 ```
 npm install
