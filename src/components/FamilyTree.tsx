@@ -11,7 +11,7 @@ const SubFamilyTree = ({ rootMember, level = 0 }: SubFamilyTreeProps) => {
   const renderCouple = () => (
     <div className="border-solid border-gray-300 border p-2 rounded-md inline-block">
       <Person member={rootMember} />
-      <Person member={rootMember?.spouse} />
+      <Person member={rootMember?.spouse} isDescendant={level === 0 && true} />
     </div>
   )
 

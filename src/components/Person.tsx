@@ -4,7 +4,12 @@ import { useState } from 'react'
 import AddMember from '@/components/AddMember'
 import Avatar from '@/components/Avatar'
 
-export const Person = ({ member }: { member: IMember | null }) => {
+interface IPersonProps {
+  member: IMember | null
+  isDescendant?: boolean
+}
+
+export const Person = ({ member, isDescendant = true }: IPersonProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [sourceMember, setSourceMember] = useState<IMember | null>(member)
 
@@ -33,6 +38,7 @@ export const Person = ({ member }: { member: IMember | null }) => {
         color={gender === Gender.MALE ? 'bg-male' : 'bg-female'}
         onClick={handleOnClick}
         title={`Avatar for ${name}`}
+        isDescendant={isDescendant}
       />
       <p className="m-0 text-gray-500">{member.name}</p>
     </div>

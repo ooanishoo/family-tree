@@ -5,9 +5,15 @@ interface AvatarProps {
   title?: string
   onClick?: () => void
   size?: number
+  isDescendant?: boolean
 }
 
-const Avatar = ({ color, title, onClick }: AvatarProps) => {
+const Avatar = ({
+  color,
+  title,
+  onClick,
+  isDescendant = true,
+}: AvatarProps) => {
   return (
     <span
       role="img"
@@ -16,7 +22,8 @@ const Avatar = ({ color, title, onClick }: AvatarProps) => {
       onClick={onClick}
       className={clsx(
         !color && 'bg-gray-500',
-        `${color} inline-block relative h-10 w-10 cursor-pointer overflow-hidden rounded-full border-[0.5px] border-solid border-gray-500`,
+        `${color} inline-block relative h-10 w-10 cursor-pointer overflow-hidden rounded-full  border-[0.5px] border-solid border-gray-500`,
+        isDescendant && 'ring-4 ring-slate-300',
       )}
     >
       <svg
