@@ -20,7 +20,7 @@ export const Person = ({ member }: { member: IMember | null }) => {
 
   return (
     <div
-      className="!border-none py-2 px-3 inline-block"
+      className="!border-none py-1 px-2 inline-block"
       data-testid="person-container"
     >
       {isModalVisible && (

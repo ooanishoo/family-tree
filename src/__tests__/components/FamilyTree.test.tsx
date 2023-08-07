@@ -2,6 +2,16 @@ import { IMember } from '@/types/IMember'
 import { Gender } from '@/types/Gender'
 import FamilyTree from '@/components/FamilyTree'
 import { render, screen } from '@testing-library/react'
+import {
+  FamilyTreeProvider,
+  useFamilyTree,
+} from '@/components/FamilyTreeProvider'
+
+// mock useFamilyTree hook
+jest.mock('../../components/FamilyTreeProvider', () => ({
+  ...jest.requireActual('../../components/FamilyTreeProvider'),
+  useFamilyTree: jest.fn(),
+}))
 
 describe('<FamilyTree />', () => {
   const mockRootMember: IMember = {
@@ -30,7 +40,15 @@ describe('<FamilyTree />', () => {
   }
 
   it('renders the root member, spouse, and children correctly', () => {
-    render(<FamilyTree rootMember={mockRootMember} />)
+    ;(useFamilyTree as jest.Mock).mockReturnValue({
+      root: mockRootMember,
+    })
+
+    render(
+      <FamilyTreeProvider>
+        <FamilyTree />
+      </FamilyTreeProvider>,
+    )
 
     expect(screen.getByText('John Doe')).toBeInTheDocument()
     expect(screen.getByText('Sally Doe')).toBeInTheDocument()

@@ -1,5 +1,6 @@
 import { Person } from '@/components/Person'
 import { IMember } from '@/types/IMember'
+import { useFamilyTree } from './FamilyTreeProvider'
 
 interface SubFamilyTreeProps {
   rootMember: IMember
@@ -8,9 +9,8 @@ interface SubFamilyTreeProps {
 
 const SubFamilyTree = ({ rootMember, level = 0 }: SubFamilyTreeProps) => {
   const renderCouple = () => (
-    <div className="border-solid border-gray-300 border-[1px] py-2 px-3 min-w-[80px] rounded-md inline-block">
+    <div className="border-solid border-gray-300 border p-2 rounded-md inline-block">
       <Person member={rootMember} />
-      <span className="inline-block w-2"></span>
       <Person member={rootMember?.spouse} />
     </div>
   )
@@ -31,18 +31,20 @@ const SubFamilyTree = ({ rootMember, level = 0 }: SubFamilyTreeProps) => {
   )
 
   return (
-    <li className="float-left list-none relative pt-14 pr-4 pl-1">
+    <li className="float-left list-none relative pt-14 px-2">
       {renderCouple()}
       {rootMember.children.length > 0 && renderChildren()}
     </li>
   )
 }
 
-const FamilyTree = ({ rootMember }: { rootMember: IMember }) => {
+const FamilyTree = () => {
+  const { root } = useFamilyTree()
+
   return (
     <div className="tree whitespace-nowrap" data-testid="family-tree-root">
       <ul className="relative flex flex-row items-baseline justify-center">
-        <SubFamilyTree rootMember={rootMember} />
+        <SubFamilyTree rootMember={root} />
       </ul>
     </div>
   )

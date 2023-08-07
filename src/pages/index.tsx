@@ -1,6 +1,5 @@
 import Drawer from '@/components/Drawer'
 import FamilyTree from '@/components/FamilyTree'
-import { useFamilyTree } from '@/components/FamilyTreeProvider'
 import MotherOfGirls from '@/components/MotherOfGirls'
 import SearchMember from '@/components/SearchMember'
 import SearchRelationship from '@/components/SearchRelationship'
@@ -11,7 +10,6 @@ import { useState } from 'react'
 const poppins = Poppins({ subsets: ['latin'], weight: '300' })
 
 export default function Home() {
-  const { root } = useFamilyTree()
   const [isOpen, setIsOpen] = useState(false)
 
   const showDrawer = () => setIsOpen(true)
@@ -40,7 +38,7 @@ export default function Home() {
         Search family members
       </Button>
 
-      <FamilyTree rootMember={root} />
+      <FamilyTree />
       <Drawer isOpen={isOpen} onClose={closeDrawer}>
         <div className="flex flex-col gap-8">
           <SearchRelationship />
