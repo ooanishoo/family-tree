@@ -1,5 +1,7 @@
 # Family Tree 🌳 👨‍👩‍👦
 
+![2023-08-07 at 5 29 pm](https://github.com/ooanishoo/family-tree/assets/9260574/010b88eb-c243-45b9-bfff-5cc6398a0459)
+
 ### Table of Contents
 
 - [Introduction](#introduction)
@@ -276,12 +278,11 @@ src
 
 ### Future Improvements:
 
-- **Error Handling:** The application does not handle any form errors at the moment due to time constraints. It would be great to add error handling to the application to provide a better user experience.
+- **Error Handling:** The application does not handle all the form errors at the moment due to time constraints. It would be great to add error handling to the application to provide a better user experience.
 - **Toast Notifications:** Add toast notifications to notify users of the success or failure of their actions when adding a new member to the family tree.
 - **Persistent State:** The application does not persist the family tree data state after adding new members to the tree. Saving tree data in localStorage can help persist the state of the family tree and provide a better user experience.
 - **Create new family trees:** The application does not allow users to create a new family tree. It would be great to add a feature to create a new family tree and switch between different family trees.
 - **Test cases:** Add more unit test cases for components that deal with form submission and check if the correct results are displayed on the screen.
-- **Improve UI:** Due to time constraints, in the UI a member node is only connected to a spouse. The UI does not have the exact styling to showcase that a member node is connected to its children.
 
 ### Tech Stack
 
